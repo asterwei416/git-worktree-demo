@@ -84,6 +84,36 @@
   --navbar-height: 72px;
 }
 
+/* --- Light Theme --- */
+[data-theme="light"] {
+  --color-bg: #f8fafc;
+  --color-bg-elevated: #ffffff;
+  --color-bg-card: #ffffff;
+  --color-bg-card-hover: #f1f5f9;
+  --color-surface: #e2e8f0;
+
+  --color-primary: #6366f1;
+  --color-primary-light: #4f46e5;
+  --color-primary-dark: #3730a3;
+  --color-primary-glow: rgba(99, 102, 241, 0.12);
+
+  --color-accent: #0891b2;
+  --color-accent-light: #06b6d4;
+
+  --color-text: #0f172a;
+  --color-text-secondary: #475569;
+  --color-text-muted: #94a3b8;
+  --color-text-inverse: #f1f5f9;
+
+  --color-border: rgba(15, 23, 42, 0.1);
+  --color-border-hover: rgba(15, 23, 42, 0.2);
+
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.06);
+  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.08);
+  --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.1);
+  --shadow-glow: 0 0 40px var(--color-primary-glow);
+}
+
 /* --- Reset & Base --- */
 *,
 *::before,
@@ -1242,4 +1272,46 @@ button {
   .footer__columns {
     grid-template-columns: 1fr;
   }
+}
+
+/* ========================================
+   THEME TOGGLE
+   ======================================== */
+.theme-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: var(--radius-lg);
+  border: 1.5px solid var(--color-border-hover);
+  color: var(--color-text-secondary);
+  background: transparent;
+  transition: all var(--transition-fast);
+  flex-shrink: 0;
+}
+
+.theme-toggle:hover {
+  color: var(--color-primary-light);
+  border-color: var(--color-primary-light);
+  background: var(--color-primary-glow);
+}
+
+/* Light theme — tweak navbar background */
+[data-theme="light"] .navbar {
+  background: rgba(248, 250, 252, 0.85);
+}
+
+[data-theme="light"] .hero__bg-glow {
+  opacity: 0.3;
+}
+
+/* Smooth transitions when theme changes */
+body,
+.navbar,
+.hero,
+.pricing__card,
+.feature-card,
+.footer {
+  transition: background-color var(--transition-slow), color var(--transition-slow), border-color var(--transition-slow);
 }
